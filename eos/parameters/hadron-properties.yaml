@@ -155,6 +155,13 @@ groups:
           latex:   '$m_{\rho^0}$'
           unit:     'GeV'
           comments: 'cf. [PDG-Live], December 2020'
+      'gamma::rho^0' :
+          central: +0.1474
+          min:     +0.1466
+          max:     +0.1466
+          latex:   '$\Gamma_{\rho^0}$'
+          unit:     'GeV'
+          comments: 'cf. [PDG-Live], April 2025'
       'mass::omega' :
           central: +0.78266
           min:     +0.78235
@@ -162,6 +169,13 @@ groups:
           latex:   '$m_{\omega}$'
           unit:     'GeV'
           comments: 'cf. [PDG-Live], December 2020'
+      'gamma::omega' :
+          central: +0.00868
+          min:     +0.00855
+          max:     +0.00881
+          latex:   '$\Gamma_{\omega}$'
+          unit:     'GeV'
+          comments: 'cf. [PDG-Live], April 2025'
       'mass::phi' :
           central: +1.019461
           min:     +1.019445
@@ -169,6 +183,13 @@ groups:
           latex:   '$m_{\phi}$'
           unit:     'GeV'
           comments: 'cf. [PDG-Live], December 2020'
+      'gamma::phi' :
+          central: +0.004249
+          min:     +0.004236
+          max:     +0.004262
+          latex:   '$\Gamma_{\phi}$'
+          unit:     'GeV'
+          comments: 'cf. [PDG-Live], April 2025'
       # K meson masses
       'mass::K_d^*' :
           central: +0.89555
