@@ -384,6 +384,7 @@ namespace eos::exp
         {
             _kinematics.declare(value.first, value.second);
         }
+
         for (const auto & alias : kinematics_aliases)
         {
             _kinematics.alias(alias.first, alias.second);
@@ -391,7 +392,7 @@ namespace eos::exp
 
         // Make observable
         auto observable = Observable::make(e.observable_name, this->_parameters, this->_kinematics, this->_options);
-
+        
         // Clear aliases installed as part of this expression
         for (const auto & alias : kinematics_aliases)
         {
@@ -688,7 +689,36 @@ namespace eos::exp
     Expression
     ExpressionCacher::operator() (const ObservableExpression & e)
     {
+        const auto & kinematics_aliases = e.kinematics_specification.aliases;
+
+        for (const auto & alias : kinematics_aliases)
+        {
+            e.observable->kinematics().alias(alias.first, alias.second);
+        }
+
+        // find out which kinematic variables the observable is supposed to use
+        std::set<std::string> kinematic_set;
+        const auto & entries = impl::observable_entries;
+        const auto & it      = entries.find(e.observable->name());
+        if (it != entries.end())
+        {
+            const auto entry = it->second;
+            kinematic_set.insert(entry->begin_kinematic_variables(), entry->end_kinematic_variables());
+        }
+
+        // add the ids of the used kinematic variables to kinematic_user
+        for (const auto & kinematic_name : kinematic_set)
+        {
+            e.observable->uses_kinematic(e.observable->kinematics()[kinematic_name].id());
+        }
+
         auto id = _cache.add(e.observable);
+        
+        // Clear aliases installed as part of this expression
+        for (const auto & alias : kinematics_aliases)
+        {
+            e.observable->kinematics().remove_alias(alias.first);
+        }
 
         return CachedObservableExpression(_cache, id, e.kinematics_specification);
     }
