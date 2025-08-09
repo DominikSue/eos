@@ -53,6 +53,9 @@ namespace eos
             struct DCNuL;
             struct SCNuL;
 
+            // Neutral-current leptonic sectors (Delta C = 2)
+            struct UCLL;
+
             // Charged-current semileptonic sectors (Delta B = 1)
             struct UBLNu;
             struct CBLNu;
@@ -136,6 +139,14 @@ namespace eos
         public:
             // [dbar c] [nubar l] Wilson coefficients
             virtual WilsonCoefficients<bern::ClassII> wet_dcnul(LeptonFlavor lepton_flavor, const bool & cp_conjugate = false) const = 0;
+    };
+
+    // Base class for the UCLL WET sector
+    template <> class ModelComponent<components::WET::UCLL>
+    {
+        public:
+            // [ubar c] [l l] Wilson coefficients
+            virtual WilsonCoefficients<bern::ClassII> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate = false) const = 0;
     };
 
     // Base class for the SCNuL WET sector
@@ -226,6 +237,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         public virtual ModelComponent<components::WET::DCNuL>,
         public virtual ModelComponent<components::WET::SCNuL>,
+        // Neutral-current leptonic sectors (Delta C = 2)
+        public virtual ModelComponent<components::WET::UCLL>,
         // Charged-current semileptonic sectors (Delta B = 1)
         public virtual ModelComponent<components::WET::UBLNu>,
         public virtual ModelComponent<components::WET::CBLNu>,
