@@ -47,6 +47,7 @@ namespace eos
         { "Lambda_b->Lambda_c::DKMR2017", &DKMR2017FormFactors<LambdaBToLambdaC>::make    },
         { "Lambda_c->Lambda::BMRvD2022",  &BMRvD2022FormFactors<LambdaCToLambda>::make    },
         { "Lambda_c->Lambda::DM2016",  &DM2016FormFactors<LambdaCToLambda>::make    },
+        { "Lambda_c->Proton::DM2016",  &DM2016FormFactors<LambdaCToProton>::make    },
     };
 
     std::shared_ptr<FormFactors<OneHalfPlusToOneHalfPlus>>

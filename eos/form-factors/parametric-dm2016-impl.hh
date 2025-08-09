@@ -83,6 +83,7 @@ namespace eos
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.367 },
         { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::strange), 1.968 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 1.870 },
     };
 
     template <typename Process_>
@@ -91,6 +92,7 @@ namespace eos
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.711 },
         { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::strange), 2.318 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.351 },
     };
 
     template <typename Process_>
@@ -99,6 +101,7 @@ namespace eos
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.416 },
         { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::strange), 2.112 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.010 },
     };
 
     template <typename Process_>
@@ -107,6 +110,7 @@ namespace eos
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.750 },
         { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::strange), 2.460 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.423 },
     };
 
     template <typename Process_>
@@ -115,6 +119,7 @@ namespace eos
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), (5.279 + 0.494) * (5.279 + 0.494) },
         { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::strange), (1.870 + 0.494) * (1.870 + 0.494) },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), (1.870 + 0.135) * (1.870 + 0.135) },
     };
 
     template <typename Process_>
