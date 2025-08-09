@@ -22,6 +22,7 @@
 #include <eos/c-decays/dstarq-to-l-nu.hh>
 #include <eos/c-decays/d-to-psd-l-nu.hh>
 #include <eos/c-decays/lambdac-to-lambda-l-nu.hh>
+#include <eos/c-decays/lambdac-to-proton-l-l.hh>
 #include <eos/utils/concrete-cacheable-observable.hh>
 #include <eos/utils/concrete_observable.hh>
 
@@ -142,6 +143,33 @@ namespace eos
     }
     // }}}
 
+    // Lambda_c -> p l l decays
+    // {{{
+    ObservableGroup
+    make_lambdac_to_proton_l_l_group()
+    {
+        auto imp = new Implementation<ObservableGroup>(
+            R"(Observables in $\Lambda_c \to p \ell^+ \ell^-$ decays)",
+            R"(The option "l" selects the charged lepton flavor.)",
+            {
+                make_observable("Lambda_c->Protonll::BR", R"(\mathcal{B}(\Lambda_c^+ \to p \ell^+ \ell^-))",
+                        Unit::None(),
+                        &LambdaCToProtonLeptonLepton::integrated_branching_ratio,
+                        std::make_tuple("q2_min", "q2_max"),
+                        Options{}),
+ 
+                make_observable("Lambda_c->Protonll::dBR/dq2", R"(d\mathcal{B}/dq^2(\Lambda_c^+ \to p \ell^+ \ell^-))",
+                        Unit::InverseGeV2(),
+                        &LambdaCToProtonLeptonLepton::differential_branching_ratio,
+                        std::make_tuple("q2"),
+                        Options{}),
+            }
+        );
+ 
+        return ObservableGroup(imp);
+    }
+    // }}}
+
     ObservableSection
     make_c_decays_section()
     {
@@ -156,7 +184,10 @@ namespace eos
                 make_d_to_k_l_nu_group(),
 
                 // Lc -> L l^+ nu
-                make_lambdac_to_lambda_l_nu_group()
+                make_lambdac_to_lambda_l_nu_group(),
+
+                // Lc -> p l^+ l^-
+                make_lambdac_to_proton_l_l_group()
             }
         );
 
