@@ -43,6 +43,7 @@ CONSTRAINTS_FILES = \
 	Lb-to-Lq-form-factors.yaml \
 	Lc-to-L-form-factors.yaml \
 	Lc-to-L-l-nu.yaml \
+	Lc-to-p-form-factors.yaml \
 	miscellaneous.yaml \
 	tau-to-K-nu.yaml \
 	tau-to-pi-pi-nu.yaml \
