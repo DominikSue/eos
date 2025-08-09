@@ -263,13 +263,13 @@ namespace eos
 
         static const std::vector<OptionSpecification> options;
 
-        Implementation(const Parameters &p, const Options &o, ParameterUser &u) : model(Model::make(o.get("model", "SM"), p, o)),
+        Implementation(const Parameters &p, const Options &o, ParameterUser &u) : model(Model::make(o.get("model"_ok, "SM"), p, o)),
                                                                                   parameters(p),
                                                                                   hbar(p["QM::hbar"], u),
                                                                                   tau_Lambda_c(p["life_time::Lambda_c"], u),
                                                                                   g_fermi(p["WET::G_Fermi"], u),
                                                                                   alpha_e(p["QED::alpha_e(m_c)"], u),
-                                                                                  opt_l(o, options, "l"),
+                                                                                  opt_l(o, options, "l"_ok),
                                                                                   m_l(p["mass::" + opt_l.str()], u),
                                                                                   m_Lambda_c(p["mass::Lambda_c"], u),
                                                                                   m_Proton(p["mass::Proton"], u),
@@ -286,7 +286,7 @@ namespace eos
                                                                                   delta_omega_m_rho(p["Lambda_c->Proton::res_delta_omega_m_rho"], u),
                                                                                   delta_phi_m_rho(p["Lambda_c->Proton::res_delta_phi_m_rho"], u),
                                                                                   mu(p["uc" + opt_l.str() + opt_l.str() + "::mu"], u),
-                                                                                  form_factors(FormFactorFactory<OneHalfPlusToOneHalfPlus>::create("Lambda_c->Proton::" + o.get("form-factors", "DM2016"), p, o))
+                                                                                  form_factors(FormFactorFactory<OneHalfPlusToOneHalfPlus>::create("Lambda_c->Proton::" + o.get("form-factors"_ok, "DM2016"), p, o))
         {
             u.uses(*form_factors);
             u.uses(*model);
@@ -468,7 +468,7 @@ namespace eos
     };
 
     const std::vector<OptionSpecification> Implementation<LambdaCToProtonLeptonLepton>::options{
-        {"l", {"e", "mu", "tau"}, "mu"}};
+        {"l"_ok, {"e", "mu", "tau"}, "mu"}};
 
     LambdaCToProtonLeptonLepton::LambdaCToProtonLeptonLepton(const Parameters &p, const Options &o) : PrivateImplementationPattern<LambdaCToProtonLeptonLepton>(new Implementation<LambdaCToProtonLeptonLepton>(p, o, *this))
     {
