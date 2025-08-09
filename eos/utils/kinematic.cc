@@ -24,6 +24,7 @@
 
 #include <map>
 #include <vector>
+#include <set>
 
 namespace eos
 {
@@ -44,6 +45,8 @@ namespace eos
             std::map<std::string, unsigned> alias_map;
 
             std::vector<KinematicVariable> variables;
+
+            std::vector<KinematicVariable::Id> variables_ids;
     };
 
     Kinematics::Kinematics() :
@@ -65,6 +68,7 @@ namespace eos
                 _imp->variables_data.push_back(v.second);
                 _imp->variables_names.push_back(v.first);
                 _imp->variables.push_back(KinematicVariable(_imp, index, false));
+                _imp->variables_ids.push_back(KinematicVariable::Id(index));
             }
             else
             {
@@ -254,6 +258,7 @@ namespace eos
             _imp->variables_data.push_back(value);
             _imp->variables_names.push_back(name);
             _imp->variables.push_back(KinematicVariable(_imp, index, false));
+            _imp->variables_ids.push_back(KinematicVariable::Id(index));
 
             return KinematicVariable(_imp, index, false);
         }
@@ -357,6 +362,56 @@ namespace eos
     KinematicVariable::name() const
     {
         return _imp->variables_names[_index];
+    }
+
+    KinematicVariable::Id
+    KinematicVariable::id() const
+    {
+        return _imp->variables_ids[_index];
+    }
+
+    /* KinematicUser */
+
+    template <> struct WrappedForwardIteratorTraits<KinematicUser::ConstIteratorTag>
+    {
+            using UnderlyingIterator = std::set<KinematicVariable::Id>::const_iterator;
+    };
+    template class WrappedForwardIterator<KinematicUser::ConstIteratorTag, const KinematicVariable::Id>;
+
+    KinematicUser::ConstIterator
+    KinematicUser::begin_kinematics() const
+    {
+        return ConstIterator(_ids.cbegin());
+    }
+
+    KinematicUser::ConstIterator
+    KinematicUser::end_kinematics() const
+    {
+        return ConstIterator(_ids.cend());
+    }
+
+    void
+    KinematicUser::drop(const KinematicVariable::Id & id)
+    {
+        _ids.erase(id);
+    }
+
+    void
+    KinematicUser::uses_kinematic(const KinematicVariable::Id & id)
+    {
+        _ids.insert(id);
+    }
+
+    void
+    KinematicUser::uses_kinematic(const KinematicUser & other)
+    {
+        _ids.insert(other._ids.cbegin(), other._ids.cend());
+    }
+
+    UsedKinematicVariable::UsedKinematicVariable(const KinematicVariable & variable, KinematicUser & user) :
+        KinematicVariable(variable)
+    {
+        user.uses_kinematic(variable.id());
     }
 
     UnknownKinematicVariableError::UnknownKinematicVariableError(const std::string & variable) throw() :
