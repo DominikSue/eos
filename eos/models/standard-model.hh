@@ -103,6 +103,22 @@ namespace eos
             virtual WilsonCoefficients<ChargedCurrent> wet_uslnu(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
     };
 
+    /* Neutral-current leptonic sectors (Delta C = 2) */
+ 
+    template <> class SMComponent<components::WET::UCLL> : public virtual ModelComponent<components::WET::UCLL>
+    {
+        private:
+            UsedParameter                 _alpha_e__ucll;
+            UsedParameter                 _m_Z__ucll;
+            std::array<UsedParameter, 3u> _mu__ucll;
+ 
+        public:
+            SMComponent(const Parameters &, ParameterUser &);
+ 
+            // [dbar c] [nubar l] Wilson coefficients
+            virtual WilsonCoefficients<ChargedCurrent> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
+    };
+
     /* Charged-current semileptonic sectors (Delta C = 1) */
 
     template <> class SMComponent<components::WET::DCNuL> : public virtual ModelComponent<components::WET::DCNuL>
@@ -295,6 +311,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         public SMComponent<components::WET::DCNuL>,
         public SMComponent<components::WET::SCNuL>,
+        // Neutral-current leptonic sectors (Delta C = 2)
+        public SMComponent<components::WET::UCLL>,
         // Charged-current semileptonic sectors (Delta B = 1)
         public SMComponent<components::WET::UBLNu>,
         public SMComponent<components::WET::CBLNu>,

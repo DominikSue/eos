@@ -595,6 +595,31 @@ namespace eos
         return wc;
     }
 
+    /* Neutral-current leptonic sectors (Delta C = 2) */
+ 
+    SMComponent<components::WET::UCLL>::SMComponent(const Parameters & p, ParameterUser & u) :
+        _alpha_e__ucll(p["QED::alpha_e(m_c)"], u),
+        _m_Z__ucll(p["mass::Z"], u),
+        _mu__ucll{ UsedParameter(p["ucee::mu"], u), UsedParameter(p["ucmumu::mu"], u), UsedParameter(p["uctautau::mu"], u) }
+    {
+    }
+ 
+    WilsonCoefficients<bern::ClassII>
+    SMComponent<components::WET::UCLL>::wet_ucll(LeptonFlavor lepton_flavor, const bool & /* cp_conjugate */) const
+    {
+        // determine renormalization scale
+        const double mu = _mu__ucll[static_cast<size_t>(lepton_flavor)];
+ 
+        // compute universal electroweak correction, cf. [S:1982A], eq. (1) with Qbar = 1 / 6.
+        const double etaEW = 1.0 + _alpha_e__ucll / M_PI * std::log(_m_Z__ucll / mu);
+ 
+        WilsonCoefficients<bern::ClassII> wc;
+        wc._coefficients.fill(complex<double>(0.0));
+        wc._coefficients[0] = complex<double>(etaEW);
+ 
+        return wc;
+    }
+
     /* Charged-current semileptonic sectors (Delta C = 1) */
 
     SMComponent<components::WET::DCNuL>::SMComponent(const Parameters & p, ParameterUser & u) :
@@ -1263,6 +1288,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         SMComponent<components::WET::DCNuL>(p, *this),
         SMComponent<components::WET::SCNuL>(p, *this),
+        // Neutral-current leptonic sectors (Delta C = 2)
+        SMComponent<components::WET::UCLL>(p, *this),
         // Charged-current semileptonic sectors (Delta B = 1)
         SMComponent<components::WET::UBLNu>(p, *this),
         SMComponent<components::WET::CBLNu>(p, *this),
