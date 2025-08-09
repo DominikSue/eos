@@ -89,9 +89,9 @@ public:
             p["gamma::rho^0"] = 0.1474;
 
             Options oo{
-                {"model", "WET"},
-                {"form-factors", "DM2016"},
-                {"l", "mu"}};
+                {"model"_ok, "WET"},
+                {"form-factors"_ok, "DM2016"},
+                {"l"_ok, "mu"}};
 
             LambdaCToProtonLeptonLepton d(p, oo);
 
