@@ -293,6 +293,14 @@ groups:
   - title: 'Baryon Masses'
     description: ''
     parameters:
+      # u baryon masses
+      'mass::Proton' :
+          central: +0.93827208816
+          min:     +0.93827208787
+          max:     +0.93827208845
+          latex:   '$m_{p}$'
+          unit:     'GeV'
+          comments: 'cf. [PDG-Live], December 2025'
       # s baryon masses
       'mass::Lambda' :
           central: +1.115683
