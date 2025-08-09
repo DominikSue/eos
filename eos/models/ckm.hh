@@ -80,6 +80,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         public SMComponent<components::WET::DCNuL>,
         public SMComponent<components::WET::SCNuL>,
+        // Neutral-current leptonic sectors (Delta C = 2)
+        public SMComponent<components::WET::UCLL>,
         // Charged-current semileptonic sectors (Delta B = 1)
         public SMComponent<components::WET::UBLNu>,
         public SMComponent<components::WET::CBLNu>,

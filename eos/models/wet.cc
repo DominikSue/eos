@@ -177,6 +177,116 @@ namespace eos
         return result;
     }
 
+    /* Neutral-current leptonic sectors (Delta C = 2) */
+ 
+    // [ubar c] [l l] Wilson coefficients
+    WilsonScanComponent<components::WET::UCLL>::WilsonScanComponent(const Parameters & p, const Options &, ParameterUser & u) :
+        _e_re_csl(p["ucee::Re{cSL}"], u),
+        _e_im_csl(p["ucee::Im{cSL}"], u),
+        _e_re_csr(p["ucee::Re{cSR}"], u),
+        _e_im_csr(p["ucee::Im{cSR}"], u),
+        _e_re_cvl(p["ucee::Re{cVL}"], u),
+        _e_im_cvl(p["ucee::Im{cVL}"], u),
+        _e_re_cvr(p["ucee::Re{cVR}"], u),
+        _e_im_cvr(p["ucee::Im{cVR}"], u),
+        _e_re_ct(p["ucee::Re{cT}"], u),
+        _e_im_ct(p["ucee::Im{cT}"], u),
+ 
+        _mu_re_csl(p["ucmumu::Re{cSL}"], u),
+        _mu_im_csl(p["ucmumu::Im{cSL}"], u),
+        _mu_re_csr(p["ucmumu::Re{cSR}"], u),
+        _mu_im_csr(p["ucmumu::Im{cSR}"], u),
+        _mu_re_cvl(p["ucmumu::Re{cVL}"], u),
+        _mu_im_cvl(p["ucmumu::Im{cVL}"], u),
+        _mu_re_cvr(p["ucmumu::Re{cVR}"], u),
+        _mu_im_cvr(p["ucmumu::Im{cVR}"], u),
+        _mu_re_ct(p["ucmumu::Re{cT}"], u),
+        _mu_im_ct(p["ucmumu::Im{cT}"], u),
+ 
+        _tau_re_csl(p["uctautau::Re{cSL}"], u),
+        _tau_im_csl(p["uctautau::Im{cSL}"], u),
+        _tau_re_csr(p["uctautau::Re{cSR}"], u),
+        _tau_im_csr(p["uctautau::Im{cSR}"], u),
+        _tau_re_cvl(p["uctautau::Re{cVL}"], u),
+        _tau_im_cvl(p["uctautau::Im{cVL}"], u),
+        _tau_re_cvr(p["uctautau::Re{cVR}"], u),
+        _tau_im_cvr(p["uctautau::Im{cVR}"], u),
+        _tau_re_ct(p["uctautau::Re{cT}"], u),
+        _tau_im_ct(p["uctautau::Im{cT}"], u),
+ 
+        _e_csl(std::bind(&wcimplementation::cartesian, _e_re_csl, _e_im_csl)),
+        _e_csr(std::bind(&wcimplementation::cartesian, _e_re_csr, _e_im_csr)),
+        _e_cvl(std::bind(&wcimplementation::cartesian, _e_re_cvl, _e_im_cvl)),
+        _e_cvr(std::bind(&wcimplementation::cartesian, _e_re_cvr, _e_im_cvr)),
+        _e_ct(std::bind(&wcimplementation::cartesian, _e_re_ct, _e_im_ct)),
+ 
+        _mu_csl(std::bind(&wcimplementation::cartesian, _mu_re_csl, _mu_im_csl)),
+        _mu_csr(std::bind(&wcimplementation::cartesian, _mu_re_csr, _mu_im_csr)),
+        _mu_cvl(std::bind(&wcimplementation::cartesian, _mu_re_cvl, _mu_im_cvl)),
+        _mu_cvr(std::bind(&wcimplementation::cartesian, _mu_re_cvr, _mu_im_cvr)),
+        _mu_ct(std::bind(&wcimplementation::cartesian, _mu_re_ct, _mu_im_ct)),
+ 
+        _tau_csl(std::bind(&wcimplementation::cartesian, _tau_re_csl, _tau_im_csl)),
+        _tau_csr(std::bind(&wcimplementation::cartesian, _tau_re_csr, _tau_im_csr)),
+        _tau_cvl(std::bind(&wcimplementation::cartesian, _tau_re_cvl, _tau_im_cvl)),
+        _tau_cvr(std::bind(&wcimplementation::cartesian, _tau_re_cvr, _tau_im_cvr)),
+        _tau_ct(std::bind(&wcimplementation::cartesian, _tau_re_ct, _tau_im_ct))
+    {
+    }
+ 
+    WilsonCoefficients<bern::ClassII>
+    WilsonScanComponent<components::WET::UCLL>::wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const
+    {
+        std::function<complex<double>()> cvl;
+        std::function<complex<double>()> cvr;
+        std::function<complex<double>()> csl;
+        std::function<complex<double>()> csr;
+        std::function<complex<double>()> ct;
+ 
+        if (LeptonFlavor::electron == lepton_flavor)
+        {
+            cvl = _e_cvl;
+            cvr = _e_cvr;
+            csl = _e_csl;
+            csr = _e_csr;
+            ct  = _e_ct;
+        }
+        else if (LeptonFlavor::muon == lepton_flavor)
+        {
+            cvl = _mu_cvl;
+            cvr = _mu_cvr;
+            csl = _mu_csl;
+            csr = _mu_csr;
+            ct  = _mu_ct;
+        }
+        else if (LeptonFlavor::tauon == lepton_flavor)
+        {
+            cvl = _tau_cvl;
+            cvr = _tau_cvr;
+            csl = _tau_csl;
+            csr = _tau_csr;
+            ct  = _tau_ct;
+        }
+        else
+        {
+            throw InternalError("WilsonScan implements 'e', 'mu' and 'tau' lepton flavors");
+        }
+ 
+        WilsonCoefficients<ChargedCurrent> result{
+            { { cvl(), cvr(), csl(), csr(), ct() } },
+        };
+ 
+        if (cp_conjugate)
+        {
+            for (auto & _coefficient : result._coefficients)
+            {
+                _coefficient = conj(_coefficient);
+            }
+        }
+ 
+        return result;
+    }
+
     /* Charged-current semileptonic sectors (Delta C = 1) */
 
     // [dbar c] [nubar l] Wilson coefficients
@@ -999,6 +1109,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         WilsonScanComponent<components::WET::DCNuL>(parameters, options, *this),
         WilsonScanComponent<components::WET::SCNuL>(parameters, options, *this),
+        // Neutral-current leptonic sectors (Delta C = 2)
+        WilsonScanComponent<components::WET::UCLL>(parameters, options, *this),
         // Charged-current semileptonic sectors (Delta B = 1)
         WilsonScanComponent<components::WET::UBLNu>(parameters, options, *this),
         WilsonScanComponent<components::WET::CBLNu>(parameters, options, *this),
@@ -1030,6 +1142,8 @@ namespace eos
         // Charged-current semileptonic sectors (Delta C = 1)
         WilsonScanComponent<components::WET::DCNuL>(parameters, options, *this),
         WilsonScanComponent<components::WET::SCNuL>(parameters, options, *this),
+        // Neutral-current leptonic sectors (Delta C = 2)
+        WilsonScanComponent<components::WET::UCLL>(parameters, options, *this),
         // Charged-current semileptonic sectors (Delta B = 1)
         WilsonScanComponent<components::WET::UBLNu>(parameters, options, *this),
         WilsonScanComponent<components::WET::CBLNu>(parameters, options, *this),
