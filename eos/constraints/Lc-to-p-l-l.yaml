@@ -5,32 +5,32 @@
 ########
 #
 # {{{
-Lambda_c->Protonmumu::BR[low-q2]@LHCb2024:
+Lambda_c->Protonmumu::BR[low-q2]@LHCb:2024A:
   type: Gaussian
   observable: Lambda_c->Protonll::BR
   kinematics: { q2_min: 0.045, q2_max: 0.258 }
   options: { l: mu }
   mean: 0.0
-  sigma-stat: { hi: 5.653998536e-09, lo: -0.0 }
+  sigma-stat: { hi: 5.653998536e-09, lo: -1.0e-20 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
-Lambda_c->Protonmumu::BR[high-q2]@LHCb2024:
+Lambda_c->Protonmumu::BR[high-q2]@LHCb:2024A:
   type: Gaussian
   observable: Lambda_c->Protonll::BR
   kinematics: { q2_min: 1.122, q2_max: 1.817 }
   options: { l: mu }
   mean: 0.0
-  sigma-stat: { hi: 1.8238704957353073e-08, lo: -0.0 }
+  sigma-stat: { hi: 1.8238704957353073e-08, lo: -1.0e-20 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
-Lambda_c->Protonmumu::BR[lowANDhigh-q2]@LHCb2024:
+Lambda_c->Protonmumu::BR[lowANDhigh-q2]@LHCb:2024A:
   type: Gaussian
   observable: Lambda_c->Protonll::BR1+BR2
   kinematics:
     { q2_min_1: 0.045, q2_max_1: 0.258, q2_min_2: 1.122, q2_max_2: 1.817 }
   options: { l: mu }
   mean: 0.0
-  sigma-stat: { hi: 1.7630748125441305e-08, lo: -0.0 }
+  sigma-stat: { hi: 1.7630748125441305e-08, lo: -1.0e-20 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
-Lambda_c->Protonmumu::BR[phi]@PDG2025:
+Lambda_c->Protonmumu::BR[phi]@PDG:2025A:
   type: Gaussian
   observable: Lambda_c->Protonll::BR
   kinematics: { q2_min: 0.959, q2_max: 1.122 }
@@ -38,7 +38,7 @@ Lambda_c->Protonmumu::BR[phi]@PDG2025:
   mean: 3.02e-07
   sigma-stat: { hi: 0.45e-07, lo: -0.45e-07 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
-Lambda_c->Protonmumu::BR[omega]/BR[phi]@LHCb2024:
+Lambda_c->Protonmumu::BR[omega]/BR[phi]@LHCb:2024A:
   type: Gaussian
   observable: Lambda_c->Protonll::BR1/BR2
   kinematics:
@@ -47,7 +47,7 @@ Lambda_c->Protonmumu::BR[omega]/BR[phi]@LHCb2024:
   mean: 0.240
   sigma-stat: { hi: 0.035, lo: -0.035 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
-Lambda_c->Protonmumu::BR[rho]/BR[phi]@LHCb2024:
+Lambda_c->Protonmumu::BR[rho]/BR[phi]@LHCb:2024A:
   type: Gaussian
   observable: Lambda_c->Protonll::(BR1+BR2)/BR3
   kinematics:
