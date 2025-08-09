@@ -140,7 +140,13 @@ class ObservableTest : public TestCase
             {
                 static const std::set<std::string> allowed_kinematic_variables{ "q2",
                                                                                 "q2_min",
+                                                                                "q2_min_1",
+                                                                                "q2_min_2",
+                                                                                "q2_min_3",
                                                                                 "q2_max",
+                                                                                "q2_max_1",
+                                                                                "q2_max_2",
+                                                                                "q2_max_3",
                                                                                 "q2_num",
                                                                                 "q2_min_num",
                                                                                 "q2_max_num",

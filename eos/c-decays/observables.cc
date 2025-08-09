@@ -163,6 +163,32 @@ namespace eos
                         &LambdaCToProtonLeptonLepton::differential_branching_ratio,
                         std::make_tuple("q2"),
                         Options{}),
+
+                make_expression_observable("Lambda_c->Protonll::BR1/BR2", R"(\frac{\mathcal{B}_{[q2min1,q2max1]}}{\mathcal{B}_{[q2min2,q2max2]}}(\Lambda_c\to p \mu^+\mu^-))",
+                        Unit::None(),
+                        R"(
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_1,q2_max=>q2_max_1] 
+                        / 
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_2,q2_max=>q2_max_2]
+                        )"),
+
+                make_expression_observable("Lambda_c->Protonll::BR1+BR2", R"(\mathcal{B}_{[q2min1,q2max1]}(\Lambda_c\to p \mu^+\mu^-) + \mathcal{B}_{[q2min2,q2max2]} (\Lambda_c\to p \mu^+\mu^-))",
+                        Unit::None(),
+                        R"(
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_1,q2_max=>q2_max_1] 
+                        + 
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_2,q2_max=>q2_max_2]
+                        )"),
+
+                make_expression_observable("Lambda_c->Protonll::(BR1+BR2)/BR3", R"(\frac{\mathcal{B}_{[q2min1,q2max1]}+\mathcal{B}_{[q2min2,q2max2]}}{\mathcal{B}_{[q2min3,q2max3]}}(\Lambda_c\to p \mu^+\mu^-))",
+                        Unit::None(),
+                        R"(
+                        (<<Lambda_c->Protonll::BR>>[q2_min=>q2_min_1,q2_max=>q2_max_1] 
+                        + 
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_2,q2_max=>q2_max_2] ) 
+                        / 
+                        <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_3,q2_max=>q2_max_3]
+                        )"),
             }
         );
  
