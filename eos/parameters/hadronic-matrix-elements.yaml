@@ -4480,11 +4480,11 @@ groups:
             - [0, 1, 2, 3]
           comments: ''
       # form factor parameters for Lambda_c -> Proton decays in the DM2016 parametrization
-      "Lambda_c->Proton::a_%3%_%1%^%2%@DM2016":
+      'Lambda_c->Proton::a_%3%_%1%^%2%@DM2016':
         central: -0.0
         min: -2.0
         max: +2.0
-        unit: "1"
+        unit: '1'
         latex:
           template: '$a_{%1%,%3%}^{%2%,\Lambda_c \to p ,\mathrm{DM2016}}$'
           map:
@@ -4496,48 +4496,48 @@ groups:
           - ["V", "A", "T", "T5"]
           - [0, 1, 2, 3]
         comments: ''
-      "Lambda_c->Proton::res_a_rho":
+      'Lambda_c->Proton::res_a_rho':
         central: +0.44
         min: -0.44
         max: +1.0
         latex: '$a_{\rho}^{\Lambda_c\to p \ell\ell}$'
-        unit: "GeV^2"
-        comments: ""
-      "Lambda_c->Proton::res_a_omega":
+        unit: 'GeV^2'
+        comments: ''
+      'Lambda_c->Proton::res_a_omega':
         central: +0.073
         min: -0.073
         max: +1.0
         latex: '$a_{\omega}^{\Lambda_c\to p \ell\ell}$'
-        unit: "GeV^2"
-        comments: ""
-      "Lambda_c->Proton::res_a_phi":
+        unit: 'GeV^2'
+        comments: ''
+      'Lambda_c->Proton::res_a_phi':
         central: +0.102
         min: -0.102
         max: +1.0
         latex: '$a_{\phi}^{\Lambda_c\to p \ell\ell}$'
-        unit: "GeV^2"
-        comments: ""
-      "Lambda_c->Proton::res_delta_rho":
+        unit: 'GeV^2'
+        comments: ''
+      'Lambda_c->Proton::res_delta_rho':
         central: +0.0
         min: -3.14
         max: +3.14
-        latex: '$a_{\rho}^{\Lambda_c\to p \ell\ell}$'
-        unit: "1"
-        comments: ""
-      "Lambda_c->Proton::res_delta_omega_m_rho":
+        latex: '$\delta_{\rho}^{\Lambda_c\to p \ell\ell}$'
+        unit: '1'
+        comments: ''
+      'Lambda_c->Proton::res_delta_omega_m_rho':
         central: +3.14
         min: -3.14
         max: +3.14
         latex: '$\delta_{\omega}^{\Lambda_c\to p \ell\ell} - \delta_{\rho}^{\Lambda_c\to p \ell\ell}$'
-        unit: "1"
-        comments: ""
-      "Lambda_c->Proton::res_delta_phi_m_rho":
+        unit: '1'
+        comments: ''
+      'Lambda_c->Proton::res_delta_phi_m_rho':
         central: +1.11
         min: -3.14
         max: +3.14
         latex: '$\delta_{\phi}^{\Lambda_c\to p \ell\ell} - \delta_{\rho}^{\Lambda_c\to p \ell\ell}$'
-        unit: "1"
-        comments: ""
+        unit: '1'
+        comments: ''
       # form factor parameters for Lambda_b -> Lambda decays according to
       # [BMRvD:2022A]
       'Lambda_b->Lambda::tp_a@BMRvD2022' :
