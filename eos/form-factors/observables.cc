@@ -2843,6 +2843,7 @@ namespace eos
                 make_lambdab_to_lambda_form_factors_group(),
                 make_lambdab_to_lambdac_form_factors_group(),
                 make_lambdac_to_lambda_form_factors_group(),
+                make_lambdac_to_proton_form_factors_group(),
 
                 // Lb -> 3/2^-
                 make_lambdab_to_threehalf_form_factors_group(),
