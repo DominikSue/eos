@@ -152,12 +152,18 @@ namespace eos
             R"(Observables in $\Lambda_c \to p \ell^+ \ell^-$ decays)",
             R"(The option "l" selects the charged lepton flavor.)",
             {
-                make_observable("Lambda_c->Protonll::BR", R"(\mathcal{B}(\Lambda_c^+ \to p \ell^+ \ell^-))",
-                        Unit::None(),
-                        &LambdaCToProtonLeptonLepton::integrated_branching_ratio,
+                make_observable("Lambda_c->Protonll::Gamma", R"(\Gamma(\Lambda_c^+ \to p \ell^+ \ell^-))",
+                        Unit::GeV(),
+                        &LambdaCToProtonLeptonLepton::integrated_decay_width,
                         std::make_tuple("q2_min", "q2_max"),
                         Options{}),
  
+                make_expression_observable("Lambda_c->Protonll::BR", R"(\mathcal{B}(\Lambda_c^+ \to p \ell^+ \ell^-))",
+                        Unit::None(),
+                        R"(
+                        <<Lambda_c->Protonll::Gamma>> * [[life_time::Lambda_c]] / [[QM::hbar]]
+                        )"),
+
                 make_observable("Lambda_c->Protonll::dBR/dq2", R"(d\mathcal{B}/dq^2(\Lambda_c^+ \to p \ell^+ \ell^-))",
                         Unit::InverseGeV2(),
                         &LambdaCToProtonLeptonLepton::differential_branching_ratio,
@@ -188,6 +194,54 @@ namespace eos
                         <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_2,q2_max=>q2_max_2] ) 
                         / 
                         <<Lambda_c->Protonll::BR>>[q2_min=>q2_min_3,q2_max=>q2_max_3]
+                        )"),
+
+                make_observable("Lambda_c->Protonll::FL(q2)", R"(F_{\mathrm{L}}^{\Lambda_c^+ \to p \ell^+ \ell^-}(q^2))",
+                        Unit::None(),
+                        &LambdaCToProtonLeptonLepton::differential_fzero,
+                        std::make_tuple("q2"),
+                        Options{}),
+    
+                make_observable("Lambda_c->Protonll::AFB(q2)", R"(A_{\mathrm{FB}}^{\Lambda_c^+ \to p \ell^+ \ell^-}(q^2))",
+                        Unit::None(),
+                        &LambdaCToProtonLeptonLepton::differential_a_fb_leptonic,
+                        std::make_tuple("q2"),
+                        Options{}),
+
+                make_observable("Lambda_c->Protonll::FL_num", R"(\Gamma \cdot \langle F_{\mathrm{L}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::GeV(),
+                        &LambdaCToProtonLeptonLepton::integrated_fL_num,
+                        std::make_tuple("q2_min", "q2_max"),
+                        Options{}),
+
+                make_observable("Lambda_c->Protonll::AFB_num", R"(\Gamma \cdot \langle A_{\mathrm{FB}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::GeV(),
+                        &LambdaCToProtonLeptonLepton::integrated_a_fb_leptonic_num,
+                        std::make_tuple("q2_min", "q2_max"),
+                        Options{}),
+
+                make_expression_observable("Lambda_c->Protonll::FL", R"(\langle F_{\mathrm{L}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::None(),
+                        R"(
+                        <<Lambda_c->Protonll::FL_num>> / <<Lambda_c->Protonll::Gamma>>
+                        )"),
+
+                make_expression_observable("Lambda_c->Protonll::AFB", R"(\langle A_{\mathrm{FB}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::None(),
+                        R"(
+                        <<Lambda_c->Protonll::AFB_num>> / <<Lambda_c->Protonll::Gamma>>
+                        )"),
+
+                make_expression_observable("Lambda_c->Protonll::SigmaAFB", R"(\Sigma\langle A_{\mathrm{FB}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::None(),
+                        R"(
+                        0.5 * (<<Lambda_c->Protonll::AFB;cp-conjugate=false>> + <<Lambda_c->Protonll::AFB;cp-conjugate=true>>) 
+                        )"),
+
+                make_expression_observable("Lambda_c->Protonll::DeltaAFB", R"(\Delta\langle A_{\mathrm{FB}}^{\Lambda_c^+ \to p \ell^+ \ell^-}\rangle)",
+                        Unit::None(),
+                        R"(
+                        0.5 * (<<Lambda_c->Protonll::AFB;cp-conjugate=false>> - <<Lambda_c->Protonll::AFB;cp-conjugate=true>>) 
                         )"),
             }
         );

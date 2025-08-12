@@ -216,6 +216,12 @@ namespace eos
             }
 
             inline double
+            f_L_num() const
+            {
+                return (2.0 * k1ss() - k1cc());
+            }
+
+            inline double
             d4gamma(const double &c_lep, const double &c_lam, const double &phi) const
             {
                 const double c2_lep = c_lep * c_lep;
@@ -578,6 +584,12 @@ namespace eos
     LambdaCToProtonLeptonLepton::integrated_fzero(const double &s_min, const double &s_max) const
     {
         return _imp->integrated_angular_observables(s_min, s_max).f_zero();
+    }
+
+    double
+    LambdaCToProtonLeptonLepton::integrated_fL_num(const double &s_min, const double &s_max) const
+    {
+        return _imp->integrated_angular_observables(s_min, s_max).f_L_num();
     }
 
     double
