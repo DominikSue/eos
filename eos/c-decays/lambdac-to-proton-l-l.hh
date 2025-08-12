@@ -55,6 +55,7 @@ namespace eos
         double integrated_a_fb_hadronic(const double &q2_min, const double &q2_max) const;
         double integrated_a_fb_combined(const double &q2_min, const double &q2_max) const;
         double integrated_fzero(const double &q2_min, const double &q2_max) const;
+        double integrated_fL_num(const double &q2_min, const double &q2_max) const;
         double integrated_k1ss(const double &q2_min, const double &q2_max) const;
         double integrated_k1cc(const double &q2_min, const double &q2_max) const;
         double integrated_k1c(const double &q2_min, const double &q2_max) const;
