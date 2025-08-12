@@ -2565,66 +2565,78 @@ groups:
           max:     +1.275
           unit:     'GeV'
           latex:    '$\mu^{\bar{u}cee}$'
-      'ucee::Re{cVL}' :
+      'ucee::Re{c7}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{V_L}$'
-      'ucee::Im{cVL}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{7}$'
+      'ucee::Im{c7}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{V_L}$'
-      'ucee::Re{cVR}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{7}$'
+      'ucee::Re{c7p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{V_R}$'
-      'ucee::Im{cVR}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}cee}_{7}$'
+      'ucee::Im{c7p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{V_R}$'
-      'ucee::Re{cSL}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}cee}_{7}$'
+      'ucee::Re{c9}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{S_L}$'
-      'ucee::Im{cSL}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{9}$'
+      'ucee::Im{c9}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{S_L}$'
-      'ucee::Re{cSR}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{9}$'
+      'ucee::Re{c9p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{S_R}$'
-      'ucee::Im{cSR}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}cee}_{9}$'
+      'ucee::Im{c9p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{S_R}$'
-      'ucee::Re{cT}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}cee}_{9}$'
+      'ucee::Re{c10}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{T}$'
-      'ucee::Im{cT}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}cee}_{10}$'
+      'ucee::Im{c10}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{T}$'
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}cee}_{10}$'
+      'ucee::Re{c10p}' :
+          central: 0.0
+          min:     0.0
+          max:     0.0
+          unit:     '1'
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}cee}_{10}$'
+      'ucee::Im{c10p}' :
+          central: 0.0
+          min:     0.0
+          max:     0.0
+          unit:     '1'
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}cee}_{10}$'
 
       # ucll Wilson coefficients - muon
       'ucmumu::mu' :
@@ -2633,66 +2645,78 @@ groups:
           max:     1.275
           latex:   '$\mu^{\bar{u}c\mu\mu}$'
           unit:    'GeV'
-      'ucmumu::Re{cVL}' :
+      'ucmumu::Re{c7}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{V_L}$'
-      'ucmumu::Im{cVL}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{7}$'
+      'ucmumu::Im{c7}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{V_L}$'
-      'ucmumu::Re{cVR}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{7}$'
+      'ucmumu::Re{c7p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{V_R}$'
-      'ucmumu::Im{cVR}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{7}$'
+      'ucmumu::Im{c7p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{V_R}$'
-      'ucmumu::Re{cSL}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{7}$'
+      'ucmumu::Re{c9}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{S_L}$'
-      'ucmumu::Im{cSL}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{9}$'
+      'ucmumu::Im{c9}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{S_L}$'
-      'ucmumu::Re{cSR}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{9}$'
+      'ucmumu::Re{c9p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{S_R}$'
-      'ucmumu::Im{cSR}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{9}$'
+      'ucmumu::Im{c9p}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{S_R}$'
-      'ucmumu::Re{cT}' :
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{9}$'
+      'ucmumu::Re{c10}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{T}$'
-      'ucmumu::Im{cT}' :
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\mu\mu}_{10}$'
+      'ucmumu::Im{c10}' :
           central: 0.0
           min:     0.0
           max:     0.0
           unit:     '1'
-          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{T}$'
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\mu\mu}_{10}$'
+      'ucmumu::Re{c10p}' :
+          central: 0.0
+          min:     0.0
+          max:     0.0
+          unit:     '1'
+          latex:   '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{10}$'
+      'ucmumu::Im{c10p}' :
+          central: 0.0
+          min:     0.0
+          max:     0.0
+          unit:     '1'
+          latex:   '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\mu\mu}_{10}$'
 
       # ucll Wilson coefficients - tau
       'uctautau::mu' :
@@ -2701,64 +2725,76 @@ groups:
           max:     +1.275
           latex:    '$\mu^{\bar{u}c\tau\tau}$'
           unit:     'GeV'
-      'uctautau::Re{cVL}' :
+      'uctautau::Re{c7}' :
           central: +1.0
           min:     +1.0
           max:     +1.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{V_L}$'
-      'uctautau::Im{cVL}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{7}$'
+      'uctautau::Im{c7}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{V_L}$'
-      'uctautau::Re{cVR}' :
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{7}$'
+      'uctautau::Re{c7p}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{V_R}$'
-      'uctautau::Im{cVR}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{7}$'
+      'uctautau::Im{c7p}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{V_R}$'
-      'uctautau::Re{cSL}' :
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{7}$'
+      'uctautau::Re{c9}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{S_L}$'
-      'uctautau::Im{cSL}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{9}$'
+      'uctautau::Im{c9}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{S_L}$'
-      'uctautau::Re{cSR}' :
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{9}$'
+      'uctautau::Re{c9p}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{S_R}$'
-      'uctautau::Im{cSR}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{9}$'
+      'uctautau::Im{c9p}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{S_R}$'
-      'uctautau::Re{cT}' :
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{9}$'
+      'uctautau::Re{c10}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{T}$'
-      'uctautau::Im{cT}' :
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\bar{u}c\tau\tau}_{10}$'
+      'uctautau::Im{c10}' :
           central: +0.0
           min:     +0.0
           max:     +0.0
           unit:     '1'
-          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{T}$'
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\bar{u}c\tau\tau}_{10}$'
+      'uctautau::Re{c10p}' :
+          central: +0.0
+          min:     +0.0
+          max:     +0.0
+          unit:     '1'
+          latex:    '$\mathrm{Re}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{10}$'
+      'uctautau::Im{c10p}' :
+          central: +0.0
+          min:     +0.0
+          max:     +0.0
+          unit:     '1'
+          latex:    '$\mathrm{Im}\, \mathcal{C}^{\prime\,\bar{u}c\tau\tau}_{10}$'
   # }}}
