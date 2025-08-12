@@ -51,6 +51,7 @@ namespace eos
 
         double integrated_branching_ratio(const double &q2_min, const double &q2_max) const;
         double integrated_a_fb_leptonic(const double &q2_min, const double &q2_max) const;
+        double integrated_a_fb_leptonic_num(const double &q2_min, const double &q2_max) const;
         double integrated_a_fb_hadronic(const double &q2_min, const double &q2_max) const;
         double integrated_a_fb_combined(const double &q2_min, const double &q2_max) const;
         double integrated_fzero(const double &q2_min, const double &q2_max) const;

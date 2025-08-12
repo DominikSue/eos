@@ -192,6 +192,12 @@ namespace eos
             }
 
             inline double
+            a_fb_leptonic_num() const
+            {
+                return 3.0 / 2.0 * k1c();
+            }
+
+            inline double
             a_fb_hadronic() const
             {
                 return 1.0 / 2.0 * (2.0 * k2ss() + k2cc()) / decay_width();
@@ -257,6 +263,8 @@ namespace eos
         UsedParameter delta_omega_m_rho;
         UsedParameter delta_phi_m_rho;
 
+        BooleanOption opt_cp_conjugate;
+
         UsedParameter mu;
 
         std::shared_ptr<FormFactors<OneHalfPlusToOneHalfPlus>> form_factors;
@@ -285,6 +293,7 @@ namespace eos
                                                                                   delta_rho(p["Lambda_c->Proton::res_delta_rho"], u),
                                                                                   delta_omega_m_rho(p["Lambda_c->Proton::res_delta_omega_m_rho"], u),
                                                                                   delta_phi_m_rho(p["Lambda_c->Proton::res_delta_phi_m_rho"], u),
+                                                                                  opt_cp_conjugate(o, options, "cp-conjugate"_ok),
                                                                                   mu(p["uc" + opt_l.str() + opt_l.str() + "::mu"], u),
                                                                                   form_factors(FormFactorFactory<OneHalfPlusToOneHalfPlus>::create("Lambda_c->Proton::" + o.get("form-factors"_ok, "DM2016"), p, o))
         {
@@ -320,7 +329,7 @@ namespace eos
 
             lambdac_to_proton_l_l::Amplitudes result;
 
-            const auto wc = model->wet_ucll(opt_l.value(), false); // need to redo
+            const auto wc = model->wet_ucll(opt_l.value(), opt_cp_conjugate.value()); // need to redo
             const complex<double> c7 = wc.c7();
             const complex<double> c7p = wc.c7p();
             const complex<double> c9 = wc.c9();
@@ -358,6 +367,13 @@ namespace eos
             // std::printf("rho_fac(q2:%f) = %f + %fi\n", s, real(rho_fac), imag(rho_fac));
             // std::printf("omega_fac(q2:%f) = %f + %fi\n", s, real(omega_fac), imag(omega_fac));
             // std::printf("phi_fac(q2:%f) = %f + %fi\n", s, real(phi_fac), imag(phi_fac));
+
+            // std::printf("c7 = %f + %fi\n", real(c7), imag(c7));
+            // std::printf("c7p = %f + %fi\n", real(c7p), imag(c7p));
+            // std::printf("c9 = %f + %fi\n", real(c9), imag(c9));
+            // std::printf("c9p = %f + %fi\n", real(c9p), imag(c9p));
+            // std::printf("c10 = %f + %fi\n", real(c10), imag(c10));
+            // std::printf("c10p = %f + %fi\n", real(c10p), imag(c10p));
 
             const complex<double> cPhase = std::polar(1.0, res_delta_rho);
 
@@ -471,6 +487,7 @@ namespace eos
     };
 
     const std::vector<OptionSpecification> Implementation<LambdaCToProtonLeptonLepton>::options{
+        { "cp-conjugate"_ok, { "true", "false" },                     "false" },
         {"l"_ok, {"e", "mu", "tau"}, "mu"}};
 
     LambdaCToProtonLeptonLepton::LambdaCToProtonLeptonLepton(const Parameters &p, const Options &o) : PrivateImplementationPattern<LambdaCToProtonLeptonLepton>(new Implementation<LambdaCToProtonLeptonLepton>(p, o, *this))
@@ -537,6 +554,12 @@ namespace eos
     LambdaCToProtonLeptonLepton::integrated_a_fb_leptonic(const double &s_min, const double &s_max) const
     {
         return _imp->integrated_angular_observables(s_min, s_max).a_fb_leptonic();
+    }
+
+    double
+    LambdaCToProtonLeptonLepton::integrated_a_fb_leptonic_num(const double &s_min, const double &s_max) const
+    {
+        return _imp->integrated_angular_observables(s_min, s_max).a_fb_leptonic_num();
     }
 
     double
