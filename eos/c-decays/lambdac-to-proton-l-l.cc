@@ -277,7 +277,7 @@ namespace eos
 
         static const std::vector<OptionSpecification> options;
 
-        Implementation(const Parameters &p, const Options &o, ParameterUser &u) : model(Model::make(o.get("model"_ok, "SM"), p, o)),
+        Implementation(const Parameters &p, const Options &o, ParameterUser &u) : model(Model::make(o.get("model"_ok, "WET"), p, o)),
                                                                                   parameters(p),
                                                                                   hbar(p["QM::hbar"], u),
                                                                                   tau_Lambda_c(p["life_time::Lambda_c"], u),
