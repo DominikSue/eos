@@ -603,9 +603,6 @@ namespace eos
              */
             std::array<complex<double>, 6> _coefficients;
 
-            /*! Default ctor */
-            WilsonCoefficients();
-
             inline complex<double>
             c7() const
             {
