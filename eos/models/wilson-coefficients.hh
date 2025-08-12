@@ -421,6 +421,9 @@ namespace eos
 
         struct SBCU
         {};
+
+        struct UCLL
+        {};
     } // namespace wc
 
     /* Wilson coefficients for |Delta B| = |Delta S| = 2 operators */
@@ -571,6 +574,72 @@ namespace eos
             cTL() const
             {
                 return _coefficients[4];
+            }
+    };
+
+    template <> struct WilsonCoefficients<wc::UCLL>
+    {
+            /*
+             * Assuming only left-handed neutrinos, only two vector operators exist beyond the SM.
+             * These two operators are defined via
+             *
+             * H^eff_vec = 4 G_F / sqrt(2) alpha_e / (4 pi) (
+             *             mc/e C_7 [ubar sigma_{mu nu} P_R c][F^{mu nu}]
+             *             mc/e C_7p [ubar sigma_{mu nu} P_L c][F^{mu nu}]
+             *             C_9 [ubar gamma^mu P_L c][lbar gamma_mu  l]
+             *             C_9p [ubar gamma^mu P_R c][lbar gamma_mu  l]
+             *             C_10 [ubar gamma^mu P_L c][lbar gamma_mu gamma_5 l]
+             *             C_10p [ubar gamma^mu P_R c][lbar gamma_mu gamma_5 l]
+             *         )
+             *       = 4 G_F / sqrt(2) V_tb V_ts^* alpha_e / (2 pi) ( C_VL O_VL + C_VR O_VR )
+             *
+             * C++ idx -> operator
+             * 0       -> O_7
+             * 1       -> O_7p
+             * 2       -> O_9
+             * 3       -> O_9p
+             * 4       -> O_10
+             * 5       -> O_10p
+             */
+            std::array<complex<double>, 6> _coefficients;
+
+            /*! Default ctor */
+            WilsonCoefficients();
+
+            inline complex<double>
+            c7() const
+            {
+                return _coefficients[0];
+            }
+
+            inline complex<double>
+            c7p() const
+            {
+                return _coefficients[1];
+            }
+
+            inline complex<double>
+            c9() const
+            {
+                return _coefficients[2];
+            }
+
+            inline complex<double>
+            c9p() const
+            {
+                return _coefficients[3];
+            }
+
+            inline complex<double>
+            c10() const
+            {
+                return _coefficients[4];
+            }
+
+            inline complex<double>
+            c10p() const
+            {
+                return _coefficients[5];
             }
     };
 

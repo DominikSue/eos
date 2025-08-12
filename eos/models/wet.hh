@@ -92,49 +92,55 @@ namespace eos
             /* [dbar c] [nubar l] Wilson coefficients */
  
             // [dbar c] [nuebar e]
-            UsedParameter _e_re_csl, _e_im_csl;
-            UsedParameter _e_re_csr, _e_im_csr;
-            UsedParameter _e_re_cvl, _e_im_cvl;
-            UsedParameter _e_re_cvr, _e_im_cvr;
-            UsedParameter _e_re_ct, _e_im_ct;
- 
+            UsedParameter _e_re_c7, _e_im_c7;
+            UsedParameter _e_re_c7p, _e_im_c7p;
+            UsedParameter _e_re_c9, _e_im_c9;
+            UsedParameter _e_re_c9p, _e_im_c9p;
+            UsedParameter _e_re_c10, _e_im_c10;
+            UsedParameter _e_re_c10p, _e_im_c10p;
+
             // [dbar c] [numubar mu]
-            UsedParameter _mu_re_csl, _mu_im_csl;
-            UsedParameter _mu_re_csr, _mu_im_csr;
-            UsedParameter _mu_re_cvl, _mu_im_cvl;
-            UsedParameter _mu_re_cvr, _mu_im_cvr;
-            UsedParameter _mu_re_ct, _mu_im_ct;
- 
+            UsedParameter _mu_re_c7, _mu_im_c7;
+            UsedParameter _mu_re_c7p, _mu_im_c7p;
+            UsedParameter _mu_re_c9, _mu_im_c9;
+            UsedParameter _mu_re_c9p, _mu_im_c9p;
+            UsedParameter _mu_re_c10, _mu_im_c10;
+            UsedParameter _mu_re_c10p, _mu_im_c10p;
+
             // [dbar c] [nutaubar tau]
-            UsedParameter _tau_re_csl, _tau_im_csl;
-            UsedParameter _tau_re_csr, _tau_im_csr;
-            UsedParameter _tau_re_cvl, _tau_im_cvl;
-            UsedParameter _tau_re_cvr, _tau_im_cvr;
-            UsedParameter _tau_re_ct, _tau_im_ct;
- 
-            std::function<complex<double>()> _e_csl;
-            std::function<complex<double>()> _e_csr;
-            std::function<complex<double>()> _e_cvl;
-            std::function<complex<double>()> _e_cvr;
-            std::function<complex<double>()> _e_ct;
- 
-            std::function<complex<double>()> _mu_csl;
-            std::function<complex<double>()> _mu_csr;
-            std::function<complex<double>()> _mu_cvl;
-            std::function<complex<double>()> _mu_cvr;
-            std::function<complex<double>()> _mu_ct;
- 
-            std::function<complex<double>()> _tau_csl;
-            std::function<complex<double>()> _tau_csr;
-            std::function<complex<double>()> _tau_cvl;
-            std::function<complex<double>()> _tau_cvr;
-            std::function<complex<double>()> _tau_ct;
- 
+            UsedParameter _tau_re_c7, _tau_im_c7;
+            UsedParameter _tau_re_c7p, _tau_im_c7p;
+            UsedParameter _tau_re_c9, _tau_im_c9;
+            UsedParameter _tau_re_c9p, _tau_im_c9p;
+            UsedParameter _tau_re_c10, _tau_im_c10;
+            UsedParameter _tau_re_c10p, _tau_im_c10p;
+
+            std::function<complex<double>()> _e_c7;
+            std::function<complex<double>()> _e_c7p;
+            std::function<complex<double>()> _e_c9;
+            std::function<complex<double>()> _e_c9p;
+            std::function<complex<double>()> _e_c10;
+            std::function<complex<double>()> _e_c10p;
+
+            std::function<complex<double>()> _mu_c7;
+            std::function<complex<double>()> _mu_c7p;
+            std::function<complex<double>()> _mu_c9;
+            std::function<complex<double>()> _mu_c9p;
+            std::function<complex<double>()> _mu_c10;
+            std::function<complex<double>()> _mu_c10p;
+
+            std::function<complex<double>()> _tau_c7;
+            std::function<complex<double>()> _tau_c7p;
+            std::function<complex<double>()> _tau_c9;
+            std::function<complex<double>()> _tau_c9p;
+            std::function<complex<double>()> _tau_c10;
+            std::function<complex<double>()> _tau_c10p;
+
         public:
             WilsonScanComponent(const Parameters &, const Options &, ParameterUser &);
  
             // [ubar c] [l l] Wilson coefficients
-            virtual WilsonCoefficients<bern::ClassII> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
+            virtual WilsonCoefficients<wc::UCLL> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
     };
 
     /* Charged-current semileptonic sectors (Delta C = 1) */

@@ -403,4 +403,9 @@ namespace eos
     {
         _coefficients.fill(0.0);
     }
+
+    WilsonCoefficients<wc::UCLL>::WilsonCoefficients()
+    {
+        _coefficients.fill(0.0);
+    }
 } // namespace eos

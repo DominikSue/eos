@@ -146,7 +146,7 @@ namespace eos
     {
         public:
             // [ubar c] [l l] Wilson coefficients
-            virtual WilsonCoefficients<bern::ClassII> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate = false) const = 0;
+            virtual WilsonCoefficients<wc::UCLL> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate = false) const = 0;
     };
 
     // Base class for the SCNuL WET sector

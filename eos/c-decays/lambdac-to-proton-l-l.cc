@@ -321,16 +321,19 @@ namespace eos
             lambdac_to_proton_l_l::Amplitudes result;
 
             const auto wc = model->wet_ucll(opt_l.value(), false); // need to redo
-            const complex<double> c9minus = wc.cvr();
-            const complex<double> c9plus = wc.cvr();
-            const complex<double> c9 = wc.cvr();
-            const complex<double> c9p = wc.cvr();
-            const complex<double> c10 = wc.cvr();
-            const complex<double> c10p = wc.cvr();
-            const complex<double> c10minus = wc.csl();
-            const complex<double> c10plus = wc.csr();
-            const complex<double> c7minus = wc.ct();
-            const complex<double> c7plus = wc.ct();
+            const complex<double> c7 = wc.c7();
+            const complex<double> c7p = wc.c7p();
+            const complex<double> c9 = wc.c9();
+            const complex<double> c9p = wc.c9p();
+            const complex<double> c10 = wc.c10();
+            const complex<double> c10p = wc.c10p();
+
+            const complex<double> c7minus = c7-c7p;
+            const complex<double> c7plus = c7+c7p;
+            const complex<double> c9minus = c9-c9p;
+            const complex<double> c9plus = c9+c9p;
+            const complex<double> c10minus = c10-c10p;
+            const complex<double> c10plus = c10+c10p;
 
             const complex<double> rho_fac = 1.0 / (s - m_rho * m_rho + std::polar(m_rho * gamma_rho, M_PI / 2.0));
             const complex<double> omega_fac = 1.0 / (s - m_omega * m_omega + std::polar(m_omega * gamma_omega, M_PI / 2.0));
