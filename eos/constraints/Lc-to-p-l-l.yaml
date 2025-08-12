@@ -63,4 +63,52 @@ Lambda_c->Protonmumu::BR[rho]/BR[phi]@LHCb:2024A:
   mean: 0.229
   sigma-stat: { hi: 0.056, lo: -0.056 }
   sigma-sys: { hi: 0.0, lo: -0.0 }
+Lambda_c->Protonmumu::SigmaAFB[low-phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::SigmaAFB
+  kinematics: { q2_min: 0.959, q2_max: 1.039 }
+  options: { l: mu }
+  mean: 0.069
+  sigma-stat: { hi: 0.061, lo: -0.061 }
+  sigma-sys: { hi: 0.01, lo: -0.01 }
+Lambda_c->Protonmumu::SigmaAFB[high-phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::SigmaAFB
+  kinematics: { q2_min: 1.039, q2_max: 1.122 }
+  options: { l: mu }
+  mean: 0.016
+  sigma-stat: { hi: 0.052, lo: -0.052 }
+  sigma-sys: { hi: 0.008, lo: -0.008 }
+Lambda_c->Protonmumu::DeltaAFB[low-phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::DeltaAFB
+  kinematics: { q2_min: 0.959, q2_max: 1.039 }
+  options: { l: mu }
+  mean: 0.048
+  sigma-stat: { hi: 0.061, lo: -0.061 }
+  sigma-sys: { hi: 0.008, lo: -0.008 }
+Lambda_c->Protonmumu::DeltaAFB[high-phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::DeltaAFB
+  kinematics: { q2_min: 1.039, q2_max: 1.122 }
+  options: { l: mu }
+  mean: 0.019
+  sigma-stat: { hi: 0.052, lo: -0.052 }
+  sigma-sys: { hi: 0.006, lo: -0.006 }
+Lambda_c->Protonmumu::SigmaAFB[phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::SigmaAFB
+  kinematics: { q2_min: 0.959, q2_max: 1.122 }
+  options: { l: mu }
+  mean: 0.039
+  sigma-stat: { hi: 0.04, lo: -0.04 }
+  sigma-sys: { hi: 0.006, lo: -0.006 }
+Lambda_c->Protonmumu::DeltaAFB[phi]@LHCb:2025A:
+  type: Gaussian
+  observable: Lambda_c->Protonll::DeltaAFB
+  kinematics: { q2_min: 0.959, q2_max: 1.122 }
+  options: { l: mu }
+  mean: 0.031
+  sigma-stat: { hi: 0.04, lo: -0.04 }
+  sigma-sys: { hi: 0.004, lo: -0.004 }
 # }}}
