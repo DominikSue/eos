@@ -604,18 +604,14 @@ namespace eos
     {
     }
  
-    WilsonCoefficients<bern::ClassII>
+    WilsonCoefficients<wc::UCLL>
     SMComponent<components::WET::UCLL>::wet_ucll(LeptonFlavor lepton_flavor, const bool & /* cp_conjugate */) const
     {
         // determine renormalization scale
         const double mu = _mu__ucll[static_cast<size_t>(lepton_flavor)];
  
-        // compute universal electroweak correction, cf. [S:1982A], eq. (1) with Qbar = 1 / 6.
-        const double etaEW = 1.0 + _alpha_e__ucll / M_PI * std::log(_m_Z__ucll / mu);
- 
-        WilsonCoefficients<bern::ClassII> wc;
-        wc._coefficients.fill(complex<double>(0.0));
-        wc._coefficients[0] = complex<double>(etaEW);
+        WilsonCoefficients<wc::UCLL> wc;
+        wc._coefficients.fill(0.0);
  
         return wc;
     }

@@ -116,7 +116,7 @@ namespace eos
             SMComponent(const Parameters &, ParameterUser &);
  
             // [dbar c] [nubar l] Wilson coefficients
-            virtual WilsonCoefficients<ChargedCurrent> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
+            virtual WilsonCoefficients<wc::UCLL> wet_ucll(LeptonFlavor lepton_flavor, const bool & cp_conjugate) const;
     };
 
     /* Charged-current semileptonic sectors (Delta C = 1) */
