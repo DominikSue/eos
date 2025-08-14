@@ -23,6 +23,7 @@
 #include <eos/utils/wrapped_forward_iterator-impl.hh>
 
 #include <map>
+#include <set>
 #include <vector>
 
 namespace eos
@@ -133,6 +134,10 @@ namespace eos
         for (auto l = _imp->alias_map.cbegin(), l_end = _imp->alias_map.cend(), r = rhs._imp->alias_map.cbegin(); l != l_end; ++l, ++r)
         {
             if (l->first != r->first)
+            {
+                return false;
+            }
+            if (_imp->alias_map[l->first] != rhs._imp->alias_map[r->first])
             {
                 return false;
             }
@@ -353,6 +358,56 @@ namespace eos
     KinematicVariable::name() const
     {
         return _imp->variables_names[_index];
+    }
+
+    KinematicVariable::Id
+    KinematicVariable::id() const
+    {
+        return _index;
+    }
+
+    /* KinematicUser */
+
+    template <> struct WrappedForwardIteratorTraits<KinematicUser::ConstIteratorTag>
+    {
+            using UnderlyingIterator = std::set<KinematicVariable::Id>::const_iterator;
+    };
+    template class WrappedForwardIterator<KinematicUser::ConstIteratorTag, const KinematicVariable::Id>;
+
+    KinematicUser::ConstIterator
+    KinematicUser::begin_kinematics() const
+    {
+        return ConstIterator(_ids.cbegin());
+    }
+
+    KinematicUser::ConstIterator
+    KinematicUser::end_kinematics() const
+    {
+        return ConstIterator(_ids.cend());
+    }
+
+    void
+    KinematicUser::drop(const KinematicVariable::Id & id)
+    {
+        _ids.erase(id);
+    }
+
+    void
+    KinematicUser::uses_kinematic(const KinematicVariable::Id & id)
+    {
+        _ids.insert(id);
+    }
+
+    void
+    KinematicUser::uses_kinematic(const KinematicUser & other)
+    {
+        _ids.insert(other._ids.cbegin(), other._ids.cend());
+    }
+
+    UsedKinematicVariable::UsedKinematicVariable(const KinematicVariable & variable, KinematicUser & user) :
+        KinematicVariable(variable)
+    {
+        user.uses_kinematic(variable.id());
     }
 
     UnknownKinematicVariableError::UnknownKinematicVariableError(const std::string & variable) throw() :
