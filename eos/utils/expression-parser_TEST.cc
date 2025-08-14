@@ -232,6 +232,7 @@ class ExpressionParserTest : public TestCase
             // Test numerical evaluation
             {
                 ExpressionTest test("<<test::obs1;multiplier=2>>[q2_min=>q2_min_num] / <<test::obs1>>[q2_min=>q2_min_denom] * [[mass::c]] / 1.2");
+                ExpressionTest test_fixed("<<test::obs1;multiplier=2>>[q2_min=4.0] / <<test::obs1>>[q2_min=3.0] * [[mass::c]] / 1.2");
 
                 Parameters p = Parameters::Defaults();
                 p["mass::c"] = 1.2;
@@ -240,6 +241,9 @@ class ExpressionParserTest : public TestCase
                     {   "q2_min_num",  4.0 },
                     { "q2_min_denom",  3.0 },
                     {       "q2_max", 10.0 }
+                });
+                Kinematics k_fixed = Kinematics({
+                    { "q2_max", 10.0 }
                 });
                 Kinematics k_num   = Kinematics({
                     { "q2_min",  4.0 },
@@ -264,6 +268,12 @@ class ExpressionParserTest : public TestCase
 
                 TEST_CHECK_RELATIVE_ERROR(std::visit(evaluator, assessable_test), obs_num->evaluate() / obs_denom->evaluate(), 1e-3);
 
+                // Make and evaluate expression with fixed kinematic variables
+                ExpressionMaker maker_fixed(p, k_fixed, Options());
+                Expression      assessable_test_fixed = std::visit(maker_fixed, *test_fixed.e);
+
+                TEST_CHECK_RELATIVE_ERROR(std::visit(evaluator, assessable_test_fixed), std::visit(evaluator, assessable_test), 1e-3);
+                TEST_CHECK_RELATIVE_ERROR(std::visit(evaluator, assessable_test_fixed), obs_num->evaluate() / obs_denom->evaluate(), 1e-3);
 
                 // Observable with exponentiation
                 ExpressionTest test2("[[mass::tau]]^2 - <<mass::mu>>^2");
