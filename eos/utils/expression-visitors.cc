@@ -198,6 +198,14 @@ namespace eos::exp
     double
     ExpressionEvaluator::operator() (const ObservableExpression & e)
     {
+        const auto & kinematics_values = e.kinematics_specification.values;
+
+        // Set or alias kinematic specifications
+        for (const auto & value : kinematics_values)
+        {
+            e.observable->kinematics().declare(value.first, value.second);
+        }
+
         return e.observable->evaluate();
     }
 
