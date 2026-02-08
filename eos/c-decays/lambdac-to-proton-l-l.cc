@@ -337,23 +337,13 @@ namespace eos
             lambdac_to_proton_l_l::Amplitudes result;
 
             const auto wc = model->wet_ucll(opt_l.value(), opt_cp_conjugate.value()); // need to redo
-            const complex<double> c7 = wc.c7();
-            const complex<double> c7p = wc.c7p();
-            const complex<double> c9 = wc.c9();
-            const complex<double> c9p = wc.c9p();
-            const complex<double> c10 = wc.c10();
-            const complex<double> c10p = wc.c10p();
 
-            const complex<double> c7minus = c7-c7p;
-            const complex<double> c7plus = c7+c7p;
-            const complex<double> c9minus = c9-c9p;
-            const complex<double> c9plus = c9+c9p;
-            const complex<double> c10minus = c10-c10p;
-            const complex<double> c10plus = c10+c10p;
-
-            const complex<double> rho_fac = 1.0 / (s - m_rho * m_rho + std::polar(m_rho * gamma_rho, M_PI / 2.0));
-            const complex<double> omega_fac = 1.0 / (s - m_omega * m_omega + std::polar(m_omega * gamma_omega, M_PI / 2.0));
-            const complex<double> phi_fac = 1.0 / (s - m_phi * m_phi + std::polar(m_phi * gamma_phi, M_PI / 2.0));
+            const complex<double> c7minus = wc.c7()-wc.c7p();
+            const complex<double> c7plus = wc.c7()+wc.c7p();
+            const complex<double> c9minus = wc.c9()-wc.c9p();
+            const complex<double> c9plus = wc.c9()+wc.c9p();
+            const complex<double> c10minus = wc.c10()-wc.c10p();
+            const complex<double> c10plus = wc.c10()+wc.c10p();
 
             const double res_a_rho = a_rho;
             const double res_a_omega = a_omega;
@@ -363,7 +353,7 @@ namespace eos
             const double res_delta_omega = delta_omega_m_rho;
             const double res_delta_phi = delta_phi_m_rho;
 
-            const complex<double> c9R = (res_a_rho * rho_fac + std::polar(res_a_omega, res_delta_omega) * omega_fac + std::polar(res_a_phi, res_delta_phi) * phi_fac);
+            const complex<double> c9R = (res_a_rho / ( complex<double>(s - m_rho * m_rho, m_rho * gamma_rho)) + res_a_omega * complex<double>(std::cos(res_delta_omega),std::sin(res_delta_omega)) / ( complex<double>(s - m_omega * m_omega, m_omega * gamma_omega)) + res_a_phi * complex<double>( std::cos(res_delta_phi),std::sin(res_delta_phi) ) / ( complex<double>(s - m_phi * m_phi, m_phi * gamma_phi)));
 
             // std::printf("a_rho = %f, a_omega = %f, a_phi = %f\n", res_a_rho, res_a_omega, res_a_phi);
             // std::printf("delta_rho = %f, delta_omega = %f, delta_phi = %f\n", res_delta_rho, res_delta_omega, res_delta_phi);
@@ -382,7 +372,7 @@ namespace eos
             // std::printf("c10 = %f + %fi\n", real(c10), imag(c10));
             // std::printf("c10p = %f + %fi\n", real(c10p), imag(c10p));
 
-            const complex<double> cPhase = std::polar(1.0, res_delta_rho);
+            const complex<double> cPhase(std::cos(res_delta_rho), std::sin(res_delta_rho));
 
             // std::printf("cPhase:%f + %fi\n", real(cPhase), imag(cPhase));
 
@@ -431,7 +421,7 @@ namespace eos
             result.aL22 = +2.0 / s * (norm(c10plus) * mplus_squared * fffplus * fffplus * sminus + norm(c10minus) * mminus_squared * ffgplus * ffgplus * splus);
             result.aS22 = +2.0 / s * (norm(c10plus) * mminus_squared * fff0 * fff0 * splus + norm(c10minus) * mplus_squared * ffg0 * ffg0 * sminus);
             result.aP12 =
-                -8 * (real(c7minus * conj(c10plus)) * mcatmu / s * mminus * fffperp * ffhtildeperp + real(c7plus * conj(c10minus)) * mcatmu / s * mplus * ffgperp * ffhperp + real((c9 + c9R * cPhase) * conj(c10) - c9p * conj(c10p)) * ffgperp * fffperp) * sqrtsminussplus;
+                -8 * (real(c7minus * conj(c10plus)) * mcatmu / s * mminus * fffperp * ffhtildeperp + real(c7plus * conj(c10minus)) * mcatmu / s * mplus * ffgperp * ffhperp + real((wc.c9() + c9R * cPhase) * conj(wc.c10()) - wc.c9p() * conj(wc.c10p())) * ffgperp * fffperp) * sqrtsminussplus;
 
             // std::printf("fperp(q2=%f) = %f\n", s, fffperp);
             // std::printf("fplus(q2=%f) = %f\n", s, fffplus);
