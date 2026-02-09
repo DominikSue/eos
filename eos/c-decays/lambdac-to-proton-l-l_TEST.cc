@@ -101,6 +101,27 @@ public:
 
             // the full phase-space region for muon
             TEST_CHECK_RELATIVE_ERROR(d.integrated_branching_ratio(0.959, 1.122), 3.02e-7, eps);
+
+            p["ucmumu::Re{c10}"] = +2.0;
+            p["ucmumu::Im{c10}"] = 1.4;
+
+            Options oobar{
+                {"model"_ok, "WET"},
+                {"form-factors"_ok, "DM2016"},
+                {"l"_ok, "mu"},
+                {"cp-conjugate"_ok, "true"}};
+
+            LambdaCToProtonLeptonLepton dNP(p, oo);
+            LambdaCToProtonLeptonLepton dNPbar(p, oobar);
+
+            // check NP contributions
+            TEST_CHECK_RELATIVE_ERROR(dNP.differential_a_fb_leptonic(1.5),0.04848, eps);
+            TEST_CHECK_RELATIVE_ERROR(dNP.differential_branching_ratio(1.5),1.7868688553844158e-07, eps);
+            TEST_CHECK_RELATIVE_ERROR(dNP.integrated_decay_width(0.4,0.9),9.309968605287797e-19,eps);
+            // Sigma
+            TEST_CHECK_RELATIVE_ERROR(0.5*(dNP.integrated_a_fb_leptonic_num(0.4,0.9)/dNP.integrated_decay_width(0.4,0.9) + dNPbar.integrated_a_fb_leptonic_num(0.4,0.9)/dNPbar.integrated_decay_width(0.4,0.9)),0.052767573604217216,eps);
+            // Delta
+            TEST_CHECK_RELATIVE_ERROR(0.5*(dNP.integrated_a_fb_leptonic_num(0.4,0.9)/dNP.integrated_decay_width(0.4,0.9) - dNPbar.integrated_a_fb_leptonic_num(0.4,0.9)/dNPbar.integrated_decay_width(0.4,0.9)),-0.0786251567266188,eps);
         }
     }
 } lambdac_to_proton_l_l_test;
