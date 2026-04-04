@@ -430,6 +430,7 @@ AC_CONFIG_FILES([Makefile
 	eos/nonleptonic-amplitudes/Makefile
 	eos/parameters/Makefile
 	eos/rare-b-decays/Makefile
+	eos/rare-c-decays/Makefile
 	eos/scattering/Makefile
 	eos/statistics/Makefile
 	eos/utils/Makefile
