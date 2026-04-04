@@ -1619,6 +1619,13 @@ FY:2011A:
     id: oai:arXiv.org:1111.1844
   inspire-id: Feldmann:2011xf
   title: Form Factors for $\Lambda_b \to \Lambda$ Transitions in {SCET}
+GHM:2021A:
+  authors: Golz, Marcel and Hiller, Gudrun and Magorsch, Tom
+  eprint:
+    archive: arXiv
+    id: oai:arXiv.org:2107.13010
+  inspire-id: Golz:2021xtu
+  title: 'Probing for New Physics with Rare Charm Baryon $(\Lambda_c,\Xi_c,\Omega_c)$ Decays'
 GHMS:2012A:
   authors: Grigo, Jonathan and Hoff, Jens and Marquard, Peter and Steinhauser, Matthias
   eprint:
