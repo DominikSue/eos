@@ -82,6 +82,8 @@ namespace eos
     DM2016FormFactorTraits<Process_>::resonance_0m_masses
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.367 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 1.870 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::down), 1.870 },
     };
 
     template <typename Process_>
@@ -89,6 +91,8 @@ namespace eos
     DM2016FormFactorTraits<Process_>::resonance_0p_masses
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.711 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.351 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::down), 2.351 },
     };
 
     template <typename Process_>
@@ -96,6 +100,8 @@ namespace eos
     DM2016FormFactorTraits<Process_>::resonance_1m_masses
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.416 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.010 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::down), 2.010 },
     };
 
     template <typename Process_>
@@ -103,6 +109,8 @@ namespace eos
     DM2016FormFactorTraits<Process_>::resonance_1p_masses
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), 5.750 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), 2.423 },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::down), 2.423 },
     };
 
     template <typename Process_>
@@ -110,6 +118,8 @@ namespace eos
     DM2016FormFactorTraits<Process_>::threshold_tp_values
     {
         { std::make_tuple(QuarkFlavor::bottom, QuarkFlavor::strange), (5.279 + 0.494) * (5.279 + 0.494) },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::up), (1.870 + 0.135) * (1.870 + 0.135) },
+        { std::make_tuple(QuarkFlavor::charm, QuarkFlavor::down), (1.870 + 0.135) * (1.870 + 0.135) },
     };
 
     template <typename Process_>
