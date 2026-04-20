@@ -4396,6 +4396,17 @@ groups:
             - ["V", "A", "T", "T5"]
             - [0, 1, 2, 3, 4]
           comments: ''
+      'Lambda_c->neutron::a_%3%_%1%^%2%@DM2016':
+          central: -0.0
+          min:     -1.0
+          max:     +1.0
+          unit:     '1'
+          latex:    '$a_%3%^{\mathrm{%1%}, \mathrm{%2%}, \Lambda_c\to n, \mathrm{DM2016}}$'
+          matrix:
+            - ["time", "long", "perp"]
+            - ["V", "A", "T", "T5"]
+            - [0, 1, 2, 3, 4]
+          comments: ''
       # data-driven parameters for long-distance contributions to Lambda_c -> proton l l decays according to
       # [GHM:2021A]
       'Lambda_c->proton::res_a_rho':
