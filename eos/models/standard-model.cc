@@ -1213,12 +1213,21 @@ namespace eos
             const auto _unprimed_inter = rgeb.evolve_intermediate(alpha_s_mu, alpha_s_mu_b4, lo_unprimed_b, nlo_unprimed_b, nnlo_unprimed_b);
 
             std::array<double, 10u> _unprimed;
+            std::array<double, 10u> _o0;
+            std::array<double, 10u> _o1;
+            std::array<double, 10u> _o2;
             for (unsigned i = 0; i < 10u; ++i)
             {
                 _unprimed[i] = std::get<0>(_unprimed_inter)[i] + as * std::get<1>(_unprimed_inter)[i] + +as * as * std::get<2>(_unprimed_inter)[i];
+                _o0[i]       = std::get<0>(_unprimed_inter)[i];
+                _o1[i]       = std::get<1>(_unprimed_inter)[i] * as;
+                _o2[i]       = std::get<2>(_unprimed_inter)[i] * as * as;
             }
 
             std::copy(_unprimed.begin(), _unprimed.end(), wc._sm_like_coefficients.begin());
+            std::copy(_o0.begin(), _o0.end(), wc._sm_like_coefficients_o0.begin());
+            std::copy(_o1.begin(), _o1.end(), wc._sm_like_coefficients_o1.begin());
+            std::copy(_o2.begin(), _o2.end(), wc._sm_like_coefficients_o2.begin());
 
             return wc;
         }
@@ -1231,12 +1240,21 @@ namespace eos
             const auto _unprimed_inter = rgeW.evolve_intermediate(alpha_s_mu, alpha_s_mu_0, lo_unprimed, nlo_unprimed, nnlo_unprimed);
 
             std::array<double, 2u> _unprimed;
+            std::array<double, 2u> _o0;
+            std::array<double, 2u> _o1;
+            std::array<double, 2u> _o2;
             for (unsigned i = 0; i < 2u; ++i)
             {
                 _unprimed[i] = std::get<0>(_unprimed_inter)[i] + as * std::get<1>(_unprimed_inter)[i] + as * as * std::get<2>(_unprimed_inter)[i];
+                _o0[i]       = std::get<0>(_unprimed_inter)[i];
+                _o1[i]       = std::get<1>(_unprimed_inter)[i] * as;
+                _o2[i]       = std::get<2>(_unprimed_inter)[i] * as * as;
             }
 
             std::copy(_unprimed.begin(), _unprimed.end(), wc._sm_like_coefficients.begin());
+            std::copy(_o0.begin(), _o0.end(), wc._sm_like_coefficients_o0.begin());
+            std::copy(_o1.begin(), _o1.end(), wc._sm_like_coefficients_o1.begin());
+            std::copy(_o2.begin(), _o2.end(), wc._sm_like_coefficients_o2.begin());
 
             return wc;
         }

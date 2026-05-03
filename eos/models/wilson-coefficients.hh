@@ -603,6 +603,10 @@ namespace eos
             /* Order: c1..c6, c7..c10 */
             std::array<complex<double>, 10> _sm_like_coefficients;
 
+            std::array<double, 10> _sm_like_coefficients_o0;
+            std::array<double, 10> _sm_like_coefficients_o1;
+            std::array<double, 10> _sm_like_coefficients_o2;
+
             /* Same order as above, with helicity flip */
             std::array<complex<double>, 10> _primed_coefficients;
 
@@ -732,6 +736,186 @@ namespace eos
             cT5() const
             {
                 return _scalar_tensor_coefficients[5];
+            }
+
+            inline complex<double>
+            c1_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[0];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[0] + _sm_like_coefficients_o1[0]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[0] + _sm_like_coefficients_o1[0] + _sm_like_coefficients_o2[0]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c2_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[1];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[1] + _sm_like_coefficients_o1[1]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[1] + _sm_like_coefficients_o1[1] + _sm_like_coefficients_o2[1]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c3_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[2];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[2] + _sm_like_coefficients_o1[2]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[2] + _sm_like_coefficients_o1[2] + _sm_like_coefficients_o2[2]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c4_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[3];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[3] + _sm_like_coefficients_o1[3]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[3] + _sm_like_coefficients_o1[3] + _sm_like_coefficients_o2[3]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c5_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[4];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[4] + _sm_like_coefficients_o1[4]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[4] + _sm_like_coefficients_o1[4] + _sm_like_coefficients_o2[4]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c6_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return _sm_like_coefficients_o0[5];
+                }
+                if (i == 1)
+                {
+                    return (_sm_like_coefficients_o0[5] + _sm_like_coefficients_o1[5]);
+                }
+                if (i == 2)
+                {
+                    return (_sm_like_coefficients_o0[5] + _sm_like_coefficients_o1[5] + _sm_like_coefficients_o2[5]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c7_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return 4.0 * M_PI / _alpha_s * _sm_like_coefficients_o0[6];
+                }
+                if (i == 1)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[6] + _sm_like_coefficients_o1[6]);
+                }
+                if (i == 2)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[6] + _sm_like_coefficients_o1[6] + _sm_like_coefficients_o2[6]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c8_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return 4.0 * M_PI / _alpha_s * _sm_like_coefficients_o0[7];
+                }
+                if (i == 1)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[7] + _sm_like_coefficients_o1[7]);
+                }
+                if (i == 2)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[7] + _sm_like_coefficients_o1[7] + _sm_like_coefficients_o2[7]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c9_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return 4.0 * M_PI / _alpha_s * _sm_like_coefficients_o0[8];
+                }
+                if (i == 1)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[8] + _sm_like_coefficients_o1[8]);
+                }
+                if (i == 2)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[8] + _sm_like_coefficients_o1[8] + _sm_like_coefficients_o2[8]);
+                }
+                return {};
+            }
+
+            inline complex<double>
+            c10_i(const int i) const
+            {
+                if (i == 0)
+                {
+                    return 4.0 * M_PI / _alpha_s * _sm_like_coefficients_o0[9];
+                }
+                if (i == 1)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[9] + _sm_like_coefficients_o1[9]);
+                }
+                if (i == 2)
+                {
+                    return 4.0 * M_PI / _alpha_s * (_sm_like_coefficients_o0[9] + _sm_like_coefficients_o1[9] + _sm_like_coefficients_o2[9]);
+                }
+                return {};
             }
     };
 } // namespace eos
