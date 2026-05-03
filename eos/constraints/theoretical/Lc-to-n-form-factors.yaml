@@ -1,34 +1,34 @@
-Lambda_c->Proton::a_time+long+perp^V+A@M:2016A:
+Lambda_c->neutron::a_time+long+perp^V+A@M:2016A:
     type: MultivariateGaussian(Covariance)
     observables:
-      - Lambda_c->Proton::a_0_perp^V@DM2016
-      - Lambda_c->Proton::a_1_perp^V@DM2016
-      - Lambda_c->Proton::a_2_perp^V@DM2016
-      - Lambda_c->Proton::a_0_long^V@DM2016
-      - Lambda_c->Proton::a_1_long^V@DM2016
-      - Lambda_c->Proton::a_2_long^V@DM2016
-      - Lambda_c->Proton::a_0_time^V@DM2016
-      - Lambda_c->Proton::a_1_time^V@DM2016
-      - Lambda_c->Proton::a_2_time^V@DM2016
-      - Lambda_c->Proton::a_0_long^A@DM2016
-      - Lambda_c->Proton::a_1_perp^A@DM2016
-      - Lambda_c->Proton::a_2_perp^A@DM2016
-      - Lambda_c->Proton::a_1_long^A@DM2016
-      - Lambda_c->Proton::a_2_long^A@DM2016
-      - Lambda_c->Proton::a_0_time^A@DM2016
-      - Lambda_c->Proton::a_1_time^A@DM2016
-      - Lambda_c->Proton::a_2_time^A@DM2016
-      - Lambda_c->Proton::a_0_perp^T@DM2016
-      - Lambda_c->Proton::a_1_perp^T@DM2016
-      - Lambda_c->Proton::a_2_perp^T@DM2016
-      - Lambda_c->Proton::a_0_long^T@DM2016
-      - Lambda_c->Proton::a_1_long^T@DM2016
-      - Lambda_c->Proton::a_2_long^T@DM2016
-      - Lambda_c->Proton::a_0_long^T5@DM2016
-      - Lambda_c->Proton::a_1_perp^T5@DM2016
-      - Lambda_c->Proton::a_2_perp^T5@DM2016
-      - Lambda_c->Proton::a_1_long^T5@DM2016
-      - Lambda_c->Proton::a_2_long^T5@DM2016
+      - Lambda_c->neutron::a_0_perp^V@DM2016
+      - Lambda_c->neutron::a_1_perp^V@DM2016
+      - Lambda_c->neutron::a_2_perp^V@DM2016
+      - Lambda_c->neutron::a_0_long^V@DM2016
+      - Lambda_c->neutron::a_1_long^V@DM2016
+      - Lambda_c->neutron::a_2_long^V@DM2016
+      - Lambda_c->neutron::a_0_time^V@DM2016
+      - Lambda_c->neutron::a_1_time^V@DM2016
+      - Lambda_c->neutron::a_2_time^V@DM2016
+      - Lambda_c->neutron::a_0_long^A@DM2016
+      - Lambda_c->neutron::a_1_perp^A@DM2016
+      - Lambda_c->neutron::a_2_perp^A@DM2016
+      - Lambda_c->neutron::a_1_long^A@DM2016
+      - Lambda_c->neutron::a_2_long^A@DM2016
+      - Lambda_c->neutron::a_0_time^A@DM2016
+      - Lambda_c->neutron::a_1_time^A@DM2016
+      - Lambda_c->neutron::a_2_time^A@DM2016
+      - Lambda_c->neutron::a_0_perp^T@DM2016
+      - Lambda_c->neutron::a_1_perp^T@DM2016
+      - Lambda_c->neutron::a_2_perp^T@DM2016
+      - Lambda_c->neutron::a_0_long^T@DM2016
+      - Lambda_c->neutron::a_1_long^T@DM2016
+      - Lambda_c->neutron::a_2_long^T@DM2016
+      - Lambda_c->neutron::a_0_long^T5@DM2016
+      - Lambda_c->neutron::a_1_perp^T5@DM2016
+      - Lambda_c->neutron::a_2_perp^T5@DM2016
+      - Lambda_c->neutron::a_1_long^T5@DM2016
+      - Lambda_c->neutron::a_2_long^T5@DM2016
     kinematics:
         [ {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {} ]
     options:
