@@ -239,7 +239,7 @@ class ObservableItem(Item):
 
     def draw(self, ax, **kwargs):
         "Draw a curve of the observable."
-        ax.plot(self._xvalues, self._yvalues, label=self.label, color=self.color, **kwargs)
+        ax.plot(self._xvalues, self._yvalues, label=self.label, color=self.color, lw=self.linewidth, ls=self.linestyle, **kwargs)
 
 
 @dataclass(kw_only=True)
@@ -1801,7 +1801,7 @@ class SignalPDFItem(Item):
             self._variable.set(xvalue)
             pvalues[i] += self._pdf.evaluate()
 
-        ax.plot(xvalues, _np.exp(pvalues), alpha=self.alpha, color=self.color, label=self.label, ls=self.linestyle)
+        ax.plot(xvalues, _np.exp(pvalues), alpha=self.alpha, color=self.color, label=self.label, ls=self.linestyle, lw=self.linewidth)
 
 @dataclass(kw_only=True)
 class ComplexPlaneItem(Item):
