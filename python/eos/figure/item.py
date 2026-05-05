@@ -293,6 +293,7 @@ class UncertaintyBandItem(Item):
     range:tuple[float, float]|None=field(default=None)
     resolution:int=field(default=100)
     variable:str|None=field(default=None)
+    quantile_interval:tuple[float, float]=field(default=(0.15865, 0.84135)) # central 68% interval
 
     _api_doc = inspect.cleandoc("""\
     Plotting Uncertainty Bands
@@ -367,6 +368,12 @@ class UncertaintyBandItem(Item):
             if self.range[0] >= self.range[1]:
                 raise ValueError(f"Range must be a tuple of two values (min, max) with max > min, not {self.range}")
 
+        if self.quantile_interval is not None:
+            self.quantile_interval = tuple(float(x) for x in self.quantile_interval)
+            if self.quantile_interval[0] >= self.quantile_interval[1]:
+                raise ValueError(f"Quantile interval must be a tuple of two values (min, max) with max > min, not {self.quantile_interval}")
+            if not 0 < self.quantile_interval[0] < 1 or not 0 < self.quantile_interval[1] < 1:
+                raise ValueError(f"Quantile interval must be a tuple of two values between 0 and 1, not {self.quantile_interval}")
 
     def prepare(self, context:AnalysisFileContext=None):
         context = AnalysisFileContext() if context is None else context
@@ -398,7 +405,7 @@ class UncertaintyBandItem(Item):
         _ovalues_lower   = []
         _ovalues_central = []
         _ovalues_higher  = []
-        INTERVAL = [0.15865, 0.5, 0.84135]  # central 68% interval
+        INTERVAL = [self.quantile_interval[0], 0.5, self.quantile_interval[1]]  # central 68% interval
         for i in range(len(_samples[0])):
             lower, central, higher = eos.plot.Plotter._weighted_quantiles(_samples[:, i], INTERVAL, _weights)
             _ovalues_lower.append(lower)
