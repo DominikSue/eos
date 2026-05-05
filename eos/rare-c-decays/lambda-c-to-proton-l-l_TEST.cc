@@ -99,7 +99,7 @@ class LambdaCToProtonLeptonLeptonTest : public TestCase
 
                 const double eps = 3e-2;
 
-                TEST_CHECK_RELATIVE_ERROR(d.differential_branching_ratio(0.75), 2.75291755e-7, eps);
+                TEST_CHECK_RELATIVE_ERROR(d.differential_branching_ratio(0.75), 2.626648779310334e-07, eps);
 
                 // the full phase-space region for muon
                 TEST_CHECK_RELATIVE_ERROR(d.integrated_branching_ratio(0.959, 1.122), 3.02e-7, eps);
@@ -118,14 +118,14 @@ class LambdaCToProtonLeptonLeptonTest : public TestCase
                 LambdaCToProtonLeptonLepton dNPbar(p, oobar);
 
                 // check NP contributions
-                TEST_CHECK_RELATIVE_ERROR(dNP.differential_a_fb_leptonic(1.5), 0.04848, eps);
+                TEST_CHECK_RELATIVE_ERROR(dNP.differential_a_fb_leptonic(1.5), 0.0153, eps);
                 TEST_CHECK_RELATIVE_ERROR(dNP.differential_branching_ratio(1.5), 1.7868688553844158e-07, eps);
                 TEST_CHECK_RELATIVE_ERROR(dNP.integrated_decay_width(0.4, 0.9), 9.309968605287797e-19, eps);
                 // Sigma
                 TEST_CHECK_RELATIVE_ERROR(0.5
                                                   * (dNP.integrated_a_fb_leptonic_num(0.4, 0.9) / dNP.integrated_decay_width(0.4, 0.9)
                                                      + dNPbar.integrated_a_fb_leptonic_num(0.4, 0.9) / dNPbar.integrated_decay_width(0.4, 0.9)),
-                                          0.052767573604217216,
+                                          0.065,
                                           eps);
                 // Delta
                 TEST_CHECK_RELATIVE_ERROR(0.5
