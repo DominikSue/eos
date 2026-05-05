@@ -376,7 +376,7 @@ class UncertaintyBandItem(Item):
             raise ValueError(f"Data file '{self.datafile}' does not contain any predictions")
 
         self._variable = self.variable
-        if self._variable is not None:
+        if self._variable is None:
             # assume that the first prediction has only one kinematic variable,
             # which we adopt as the variable to plot
             kinematics = self._datafile.varied_parameters[0]['kinematics']
