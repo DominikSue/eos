@@ -494,9 +494,6 @@ class BinnedUncertaintyItem(Item):
             if band_type not in ['area', 'outer', 'median']:
                 raise ValueError(f"Unrecognized band type '{band_type}'; must be one of 'area', 'outer', or 'median'")
 
-        if self.interpolation not in ['linear', 'cubic']:
-            raise ValueError(f"Unrecognized interpolation type '{self.interpolation}'; must be either 'linear' or 'cubic'")
-
         if self.range is not None and len(self.range) != 2:
             raise ValueError(f"Range must be a tuple of two values (min, max), not {self.range}")
 
