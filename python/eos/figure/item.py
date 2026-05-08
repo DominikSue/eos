@@ -474,10 +474,37 @@ class BinnedUncertaintyItem(Item):
         figure.draw()
     """
 
+    band:set[str]|list[str]|str=field(default_factory=lambda : {'area', 'outer', 'median'})
     datafile:str
     range:tuple[float, float]|None=field(default=None)
     rescale_by_width:bool=field(default=False)
     variable:str
+
+    def __post_init__(self):
+        super().__post_init__()
+
+        if isinstance(self.band, str):
+            self.band = {self.band}
+        elif isinstance(self.band, list):
+            self.band = set(self.band)
+        elif not isinstance(self.band, set):
+            raise TypeError(f"Parameter 'band' must be a string, list of string, or a set of strings, not {type(self.band).__name__}")
+
+        for band_type in self.band:
+            if band_type not in ['area', 'outer', 'median']:
+                raise ValueError(f"Unrecognized band type '{band_type}'; must be one of 'area', 'outer', or 'median'")
+
+        if self.interpolation not in ['linear', 'cubic']:
+            raise ValueError(f"Unrecognized interpolation type '{self.interpolation}'; must be either 'linear' or 'cubic'")
+
+        if self.range is not None and len(self.range) != 2:
+            raise ValueError(f"Range must be a tuple of two values (min, max), not {self.range}")
+
+        if self.range is not None:
+            self.range = tuple(float(x) for x in self.range)
+            if self.range[0] >= self.range[1]:
+                raise ValueError(f"Range must be a tuple of two values (min, max) with max > min, not {self.range}")
+
 
     def prepare(self, context:AnalysisFileContext=None):
         """Prepare the item for drawing."""
@@ -514,10 +541,15 @@ class BinnedUncertaintyItem(Item):
             ocentral /= width
             ohi      /= width
             eos.debug(f"{xmin} ... {xmax} -> {ocentral} with interval {olo} .. {ohi}")
-            ax.fill_between([xmin, xmax], [olo, olo], [ohi, ohi], lw=0, color=self.color, alpha=self.alpha, label=label)
-            ax.plot([xmin, xmax], [olo,      olo],      color=self.color, alpha=self.alpha)
-            ax.plot([xmin, xmax], [ocentral, ocentral], color=self.color, alpha=self.alpha)
-            ax.plot([xmin, xmax], [ohi,      ohi],      color=self.color, alpha=self.alpha)
+            if 'area' in self.band:
+                ax.fill_between([xmin, xmax], [olo, olo], [ohi, ohi], alpha=self.alpha, color=self.color, label=label, lw=0)
+                label = None # do not label anything else if we fill the band area
+            if 'outer' in self.band:
+                ax.plot([xmin, xmax], [olo,      olo],                                alpha=self.alpha, color=self.color, label=label, lw=self.linewidth, ls=self.linestyle)
+                ax.plot([xmin, xmax], [ohi,      ohi],                              alpha=self.alpha, color=self.color,              lw=self.linewidth, ls=self.linestyle)
+                label = None # do not label anything else if we plot the outer lines
+            if 'median' in self.band:
+                ax.plot([xmin, xmax], [ocentral, ocentral],                             alpha=self.alpha, color=self.color, label=label, lw=self.linewidth, ls=self.linestyle)
             label = None
 
 
