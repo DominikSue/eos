@@ -236,6 +236,7 @@ class GridFigure(Figure):
 
     plots:list[Plot]
     padding:tuple[float,float]=field(default=(0.2, 0.2))
+    size:tuple[float, float]=field(default=(3.0, 3.0))
     shape:tuple[int, int]
 
     _api_doc = inspect.cleandoc("""
@@ -256,7 +257,7 @@ class GridFigure(Figure):
     """)
     def __post_init__(self):
         nrow, ncol = self.shape
-        self._figure = plt.figure(figsize=(3.0 * ncol, 3.0 * nrow))
+        self._figure = plt.figure(figsize=(self.size[0] * ncol, self.size[1] * nrow))
         self._gridspec = self._figure.add_gridspec(nrow, ncol, hspace=self.padding[0], wspace=self.padding[1])
         axes = self._gridspec.subplots()
         self._axes = axes.flatten('C') # flatten to row-major style
