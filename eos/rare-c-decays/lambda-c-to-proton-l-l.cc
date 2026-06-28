@@ -461,6 +461,10 @@ namespace eos
                 const double V_cs_theta = arg_Vcs;
                 const double V_us       = abs_Vus;
 
+                if (opt_cp_conjugate.value())
+                {
+                    return 4 * M_PI / c._alpha_s * (std::polar(V_cd, V_cd_theta) * V_ud * C9eff_d + std::polar(V_cs, V_cs_theta) * V_us * C9eff_s);
+                }
                 return 4 * M_PI / c._alpha_s * (std::polar(V_cd, -V_cd_theta) * V_ud * C9eff_d + std::polar(V_cs, -V_cs_theta) * V_us * C9eff_s);
             }
 
